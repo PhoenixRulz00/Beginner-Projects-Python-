@@ -2,16 +2,18 @@ import random
 
 minimum = int(input("Specify the minimum number you want to guess: "))
 maximum = int(input("Specify the maximum number you want to guess: "))
+if minimum > maximum:
+    print("Oops! Your minimum cannot be greater than your maximum. Swapping them for you!")
+    minimum, maximum = maximum, minimum
 limit_of_guess = int(input("Specify the limit of guesses: "))
 
 number_to_guess = random.randint(minimum, maximum)
 number_of_guesses =0
 
 while number_of_guesses<limit_of_guess:
-    number_of_guesses+=1
     try:
         guess = int(input(f"Guess the number between {minimum} and {maximum}: "))
-
+        number_of_guesses+=1
         if guess<number_to_guess:
             if number_to_guess-guess > 10:
                 print("Too Low!")
