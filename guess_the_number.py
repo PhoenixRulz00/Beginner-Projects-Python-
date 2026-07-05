@@ -2,11 +2,12 @@ import random
 
 minimum = int(input("Specify the minimum number you want to guess: "))
 maximum = int(input("Specify the maximum number you want to guess: "))
+limit_of_guess = int(input("Specify the limit of guesses: "))
 
 number_to_guess = random.randint(minimum, maximum)
 number_of_guesses =0
 
-while True:
+while number_of_guesses<limit_of_guess:
     number_of_guesses+=1
     try:
         guess = int(input(f"Guess the number between {minimum} and {maximum}: "))
@@ -27,3 +28,6 @@ while True:
             break
     except ValueError:
         print("Invalid input! Please enter a valid number.")
+else:
+    print("Sorry! You are out of guesses.")
+    print(f"The Secret number is {number_to_guess}")
