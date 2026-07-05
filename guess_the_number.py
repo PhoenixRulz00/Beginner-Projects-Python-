@@ -1,12 +1,15 @@
 import random
 
-number_to_guess = random.randint(1, 100)
+minimum = int(input("Specify the minimum number you want to guess: "))
+maximum = int(input("Specify the maximum number you want to guess: "))
+
+number_to_guess = random.randint(minimum, maximum)
 number_of_guesses =0
 
 while True:
     number_of_guesses+=1
     try:
-        guess = int(input("Guess the number between 1 and 100: "))
+        guess = int(input(f"Guess the number between {minimum} and {maximum}: "))
 
         if guess<number_to_guess:
             if number_to_guess-guess > 10:
