@@ -5,17 +5,19 @@ choices =('r', 'p', 's')
 
 print("ROCK, PAPER, SCISSORS GAME!!!\n")
 
-while True:
-    player_choice = input("Enter your choice (r,p,s): ").lower()
-    if player_choice not in choices:
-        print('\nInvalid Choice!\n')
-        continue
+def get_user_choice():
+    while True:
+        player_choice = input("Enter your choice (r,p,s): ").lower()
+        if player_choice in choices:
+            return player_choice
+        else:
+            print('\nInvalid Choice!\n')
 
-    computer_choice = random.choice(choices)
-
+def display_choices(player_choice, computer_choice):
     print(f"\nPlayer chose: {emoji[player_choice]} ")
     print(f"\nComputer chose: {emoji[computer_choice]} ")
 
+def determine_winner(player_choice, computer_choice):
     if player_choice == computer_choice:
         print("\nTie!")
     elif player_choice == 'r' and computer_choice == 's':
@@ -27,6 +29,19 @@ while True:
     else:
         print("\nYou Lose!")
 
-    reply = input("\nPlay again? (y/n): ").lower()
-    if reply == 'n':
-        break
+def play_game():
+    while True: 
+        rounds = int(input("How many rounds you want to play? : "))
+
+        player_choice = get_user_choice()
+        computer_choice = random.choice(choices)
+
+        display_choices(player_choice, computer_choice)
+
+        determine_winner(player_choice, computer_choice)
+
+        reply = input("\nPlay again? (y/n): ").lower()
+        if reply == 'n':
+            break
+
+play_game()
